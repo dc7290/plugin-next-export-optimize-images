@@ -1,6 +1,0 @@
-# config
-.eslintrc.js
-*.config.js
-
-# git
-.gitkeep
