@@ -3,8 +3,7 @@
   "version": "0.0.0-development",
   "description": "SWC plugin for `next-export-optimize-images`.",
   "keywords": [
-    "swc",
-    "plugin"
+    "swc-plugin"
   ],
   "homepage": "https://github.com/dc7290/plugin-next-export-optimize-images#readme",
   "bugs": {
@@ -16,11 +15,12 @@
   },
   "license": "MIT",
   "author": "dc7290 <dhkh.cba0927@gmail.com>",
-  "main": "plugin-next-export-optimize-images.wasm",
+  "main": "target/wasm32-wasi/release/plugin-next-export-optimize-images.wasm",
   "scripts": {
     "commitmsg": "commitlint -e $GIT_PARAMS",
     "prepare": "husky install",
-    "semantic-release": "semantic-release"
+    "semantic-release": "semantic-release",
+    "prepublishOnly": "cargo build-wasi --release"
   },
   "dependencies": {},
   "devDependencies": {
@@ -31,7 +31,6 @@
     "conventional-changelog-conventionalcommits": "5.0.0",
     "git-cz": "4.9.0",
     "husky": "8.0.1",
-    "rimraf": "3.0.2",
     "semantic-release": "19.0.3"
   },
   "volta": {
