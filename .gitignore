@@ -5,3 +5,6 @@
 /target
 ^target/
 target
+
+# dist
+plugin_next_export_optimize_images.wasm
