@@ -1,5 +1,5 @@
 {
-  "name": "@next-export-optimize-images/swc-plugin",
+  "name": "plugin-next-export-optimize-images",
   "version": "0.1.0",
   "description": "SWC plugin for `next-export-optimize-images`.",
   "keywords": [
