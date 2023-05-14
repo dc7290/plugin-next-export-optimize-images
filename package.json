@@ -1,6 +1,6 @@
 {
-  "name": "plugin-next-export-optimize-images",
-  "version": "0.0.0-development",
+  "name": "@next-export-optimize-images/swc-plugin",
+  "version": "0.1.0",
   "description": "SWC plugin for `next-export-optimize-images`.",
   "keywords": [
     "swc-plugin"
@@ -15,26 +15,8 @@
   },
   "license": "MIT",
   "author": "dc7290 <dhkh.cba0927@gmail.com>",
-  "main": "target/wasm32-wasi/release/plugin-next-export-optimize-images.wasm",
+  "main": "plugin_next_export_optimize_images.wasm",
   "scripts": {
-    "commitmsg": "commitlint -e $GIT_PARAMS",
-    "prepare": "husky install",
-    "semantic-release": "semantic-release",
-    "prepublishOnly": "cargo build-wasi --release"
-  },
-  "dependencies": {},
-  "devDependencies": {
-    "@commitlint/cli": "17.0.2",
-    "@commitlint/config-conventional": "17.0.2",
-    "@semantic-release/changelog": "6.0.1",
-    "@semantic-release/git": "10.0.1",
-    "conventional-changelog-conventionalcommits": "5.0.0",
-    "git-cz": "4.9.0",
-    "husky": "8.0.1",
-    "semantic-release": "19.0.3"
-  },
-  "volta": {
-    "node": "16.15.1",
-    "yarn": "1.22.19"
+    "prepack": "cargo build-wasi --release && cp target/wasm32-wasi/release/plugin_next_export_optimize_images.wasm ."
   }
 }

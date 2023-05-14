@@ -1,1 +1,1 @@
-# plugin-next-export-optimzie-images
+# plugin-next-export-optimize-images

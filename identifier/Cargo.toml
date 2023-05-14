@@ -1,23 +1,15 @@
 [package]
 authors = ["dc7290"]
-name = "plugin-next-export-optimize-images"
+name = "next_image_identifiers"
 version = "0.1.0"
 edition = "2021"
 
-[lib]
-crate-type = ["cdylib"]
-
-[profile.release]
-lto = true
-
 [dependencies]
-next_image_identifiers = { version = "0.1.0", path = "./identifier" }
 swc_core = { features = [
   "ecma_ast",
   "ecma_visit",
   "ecma_plugin_transform"
 ], version = "0.75.34" }
-serde_json = "1.0"
 
 [dev-dependencies]
 swc_core = { features = [
