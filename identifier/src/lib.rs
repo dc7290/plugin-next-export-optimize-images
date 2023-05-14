@@ -52,7 +52,7 @@ impl<'a> VisitMut for IdentifierVisitor {
     }
 
     fn visit_mut_jsx_opening_element(&mut self, n: &mut JSXOpeningElement) {
-        if self.next_image_import_name.is_none() {
+        if self.next_image_import_name.is_none() && self.next_image_import_name_legacy.is_none() {
             return;
         }
 
@@ -60,6 +60,25 @@ impl<'a> VisitMut for IdentifierVisitor {
 
         if let JSXElementName::Ident(ident) = element_name {
             if let Some(ref name) = self.next_image_import_name {
+                if &ident.sym.to_string() != name {
+                    return;
+                }
+
+                for attr in &mut n.attrs {
+                    if let JSXAttrOrSpread::JSXAttr(attr) = attr {
+                        if let JSXAttrName::Ident(ident) = &attr.name {
+                            if &ident.sym.to_string() == "src" {
+                                if let Some(JSXAttrValue::Lit(Lit::Str(str))) = &attr.value {
+                                    if str.value.starts_with("http") {
+                                        self.remote_images.borrow_mut().push(str.value.to_string());
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            if let Some(ref name) = self.next_image_import_name_legacy {
                 if &ident.sym.to_string() != name {
                     return;
                 }
